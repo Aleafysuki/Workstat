@@ -1,0 +1,29 @@
+# WorkBuddy / assistant internal project data (never committed)
+.workbuddy/
+
+# Scratch experiment, not part of the released tool
+_baseline/
+
+# IDE / editor caches
+**/.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# .NET build outputs
+**/bin/
+**/obj/
+**/build/
+**/dist/
+
+# Runtime data: user databases, local config, logs, backups
+WorkTimer/backup/
+**/*.db
+**/*.db-shm
+**/*.db-wal
+*.log
+
+# OS noise
+.DS_Store
+Thumbs.db

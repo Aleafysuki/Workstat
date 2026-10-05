@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+
+    <!-- 界面用 WPF：原生支持非整数 DPI（本机 110% 缩放），Grid 布局从机制上避免元素重叠，GPU 加速渲染 -->
+    <UseWPF>true</UseWPF>
+    <!-- 保留 WinForms 只是为了用它的 NotifyIcon（WPF 没有托盘图标），不建任何 WinForms 窗体 -->
+    <UseWindowsForms>true</UseWindowsForms>
+
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <AssemblyName>WorkTimer</AssemblyName>
+    <RootNamespace>WorkTimer.App</RootNamespace>
+    <SatelliteResourceLanguages>zh-Hans</SatelliteResourceLanguages>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WorkTimer.Core\WorkTimer.Core.csproj" />
+  </ItemGroup>
+
+  <!--
+    同时启用 WPF 与 WinForms 时，SDK 会把 System.Windows.Forms / System.Drawing 加进全局 using，
+    导致 Application、MessageBox、MouseEventArgs 这些名字在 WPF 与 WinForms 之间产生歧义。
+    这里把它们从全局 using 中移除：需要 WinForms 的文件（TrayController）自己用别名引入。
+  -->
+  <ItemGroup>
+    <Using Remove="System.Windows.Forms" />
+    <Using Remove="System.Drawing" />
+  </ItemGroup>
+
+</Project>

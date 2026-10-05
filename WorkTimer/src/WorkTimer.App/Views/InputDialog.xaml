@@ -1,0 +1,21 @@
+<Window x:Class="WorkTimer.App.Views.InputDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="输入"
+        Width="420" SizeToContent="Height"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner"
+        Background="{StaticResource BgBrush}"
+        FontFamily="{StaticResource UiFont}">
+
+    <StackPanel Margin="20">
+        <TextBlock x:Name="PromptText" Text="请输入：" Margin="0,0,0,8" />
+        <TextBox x:Name="ValueBox" MinWidth="360" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,18,0,0">
+            <Button Content="取消" Style="{StaticResource FlatButton}" MinWidth="80" IsCancel="True" />
+            <Button Content="确定" Style="{StaticResource PrimaryButton}" MinWidth="80"
+                    Margin="8,0,0,0" IsDefault="True" Click="OnConfirm" />
+        </StackPanel>
+    </StackPanel>
+</Window>
